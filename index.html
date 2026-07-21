@@ -61,6 +61,14 @@
             0% { transform: scale(1) translate(0, 0); }
             100% { transform: scale(1.15) translate(-2%, -2%); }
         }
+
+        /* Microefecto Hover Tarjetas Señales de Alerta */
+        .alert-card { transition: all 0.3s ease; }
+        .alert-card:hover { border-color: rgba(230, 57, 70, 0.5); box-shadow: 0 10px 20px rgba(0,0,0,0.3); transform: translateY(-5px); }
+        .alert-card .alert-icon-box { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .alert-card:hover .alert-icon-box { background-color: #e63946; transform: rotate(360deg); }
+        .alert-card .alert-icon-box i { transition: color 0.3s ease; }
+        .alert-card:hover .alert-icon-box i { color: #ffffff; }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -78,7 +86,13 @@
                     <a href="#asesoramiento" class="text-gray-300 hover:text-brandRed transition font-medium">Asesoramiento</a>
                     <a href="#diagnostico" class="text-gray-300 hover:text-brandRed transition font-medium">Turnos</a>
                 </div>
-                <div class="flex space-x-4">
+                <div class="flex space-x-4 items-center">
+                    <!-- Indicador Horario Abierto/Cerrado -->
+                    <div id="status-indicator" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800 border border-gray-700">
+                        <span id="status-dot" class="w-2.5 h-2.5 rounded-full animate-pulse"></span>
+                        <span id="status-text" class="text-xs font-bold uppercase tracking-wider"></span>
+                    </div>
+                    
                     <a href="https://www.instagram.com/wester_auto2016/" target="_blank" class="text-gray-400 hover:text-brandRed text-xl transition"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/westerauto/?ref=NONE_xav_ig_profile_page_web#" target="_blank" class="text-gray-400 hover:text-brandRed text-xl transition"><i class="fab fa-facebook-f"></i></a>
                 </div>
@@ -151,7 +165,7 @@
                 <!-- Servicio 2: Freno -->
                 <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1632238347635-3c5b16c07032?q=80&w=600&auto=format&fit=crop" alt="Frenos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://z-cdn-media.chatglm.cn/files/7eeaadc8-1749-4c63-b91f-572d32ef17ac.png?auth_key=1884664604-d76fef6123b84bb4a7c21ae02f1bf567-0-fd5ab1bb773bb63d6ce611d590599af6" alt="Frenos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
                     </div>
                     <div class="p-6 relative">
@@ -166,7 +180,7 @@
                 <!-- Servicio 3: Suspension -->
                 <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?q=80&w=600&auto=format&fit=crop" alt="Suspensión" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://z-cdn-media.chatglm.cn/files/ee0da9af-669e-441e-a8b3-0fec034006b6.png?auth_key=1884664604-223ebcd334db48b9badb231efd34c8f6-0-3318475c2c7729500f458ddb52f4d294" alt="Suspensión" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
                     </div>
                     <div class="p-6 relative">
@@ -181,7 +195,7 @@
                 <!-- Servicio 4: Motor Embrague -->
                 <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599256871679-5d06e5f9d6f4?q=80&w=600&auto=format&fit=crop" alt="Motor y Embrague" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://z-cdn-media.chatglm.cn/files/4ceb3c01-2312-49a5-9c38-5ab94847690a.png?auth_key=1884664604-ea3291c8ce90453d9c4c9d377beca495-0-8837c9a235c3c22741033b6e2e660867" alt="Motor y Embrague" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
                     </div>
                     <div class="p-6 relative">
@@ -226,7 +240,7 @@
                 <!-- Servicio 7: Balanceo -->
                 <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=600&auto=format&fit=crop" alt="Balanceo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://z-cdn-media.chatglm.cn/files/6cf9f4f4-9350-4b53-b03b-61af0a84b21a.png?auth_key=1884665970-c2f85c278f46411bb181eebb7edca08d-0-a1bef97770a2aa539fb7f7c845fb6d4d" alt="Balanceo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
                     </div>
                     <div class="p-6 relative">
@@ -241,7 +255,7 @@
                 <!-- Servicio 8: Rotación -->
                 <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
                     <div class="h-48 overflow-hidden">
-                        <img src="https://z-cdn-media.chatglm.cn/files/0d284877-f73d-4d52-b00c-d126a4f2716d.png?auth_key=1884663545-8422d5f9a75f4fb09f0da5d08b83f4f4-0-58977e8d08792752fd8cb46fc4bb93e9" alt="Rotación" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://z-cdn-media.chatglm.cn/files/6535373f-59a5-487e-8ac4-7fd279e88a3b.png?auth_key=1884665970-bfc5dea2e7b24bc698c7d114e7541005-0-eef10f311f2248a80a39abd86f33089a" alt="Rotación" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
                     </div>
                     <div class="p-6 relative">
@@ -293,9 +307,9 @@
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase">Señales de <span class="text-brandRed">Alerta</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Tarjeta 1 -->
-                <div class="bg-brandCard p-8 rounded-2xl border border-gray-800 card-hover transition duration-300 reveal flex flex-col justify-between">
+                <div class="bg-brandCard p-8 rounded-2xl border border-gray-800 reveal flex flex-col justify-between alert-card">
                     <div>
-                        <div class="bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <div class="alert-icon-box bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-compact-disc text-2xl text-brandRed"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 uppercase">Frenos</h3>
@@ -308,9 +322,9 @@
                     </a>
                 </div>
                 <!-- Tarjeta 2 -->
-                <div class="bg-brandCard p-8 rounded-2xl border border-gray-800 card-hover transition duration-300 reveal flex flex-col justify-between">
+                <div class="bg-brandCard p-8 rounded-2xl border border-gray-800 reveal flex flex-col justify-between alert-card">
                     <div>
-                        <div class="bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <div class="alert-icon-box bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-car-battery text-2xl text-brandRed"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 uppercase">Batería</h3>
@@ -323,9 +337,9 @@
                     </a>
                 </div>
                 <!-- Tarjeta 3 -->
-                <div class="bg-brandCard p-8 rounded-2xl border border-gray-800 card-hover transition duration-300 reveal flex flex-col justify-between">
+                <div class="bg-brandCard p-8 rounded-2xl border border-gray-800 reveal flex flex-col justify-between alert-card">
                     <div>
-                        <div class="bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                        <div class="alert-icon-box bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center mb-6">
                             <i class="fas fa-oil-can text-2xl text-brandRed"></i>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 uppercase">Fluidos</h3>
@@ -588,7 +602,7 @@
             const vehiculo = document.getElementById('m_vehiculo').value;
             const servicio = document.getElementById('m_servicio').value;
             const descripcion = document.getElementById('m_descripcion').value;
-            const telefono = "54903541618210"; // Usamos el número con código de área (ajustar prefijo internacional si es necesario)
+            const telefono = "54903541618210";
             
             let mensaje = `*🔧 NUEVA CONSULTA DE SERVICIO* %0A%0A`;
             mensaje += `👤 *Nombre:* ${nombre} %0A`;
@@ -618,6 +632,48 @@
 
             window.open(`https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`, '_blank');
         }
+
+        // 5. Lógica Indicador Horario (Abierto/Cerrado)
+        function checkOpenStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Domingo, 1 = Lunes, ..., 6 = Sábado
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTotalMinutes = hours * 60 + minutes;
+
+            let isOpen = false;
+
+            // Lunes (1) a Viernes (5): 8:30 - 18:00
+            if (day >= 1 && day <= 5) {
+                if (currentTotalMinutes >= 510 && currentTotalMinutes <= 1080) { // 8:30 = 510 min, 18:00 = 1080 min
+                    isOpen = true;
+                }
+            }
+            // Sábados (6): 8:30 - 13:00
+            else if (day === 6) {
+                if (currentTotalMinutes >= 510 && currentTotalMinutes <= 780) { // 8:30 = 510 min, 13:00 = 780 min
+                    isOpen = true;
+                }
+            }
+            // Domingos (0): Cerrado
+
+            const dot = document.getElementById('status-dot');
+            const text = document.getElementById('status-text');
+            const container = document.getElementById('status-indicator');
+
+            if (isOpen) {
+                dot.classList.add('bg-green-500');
+                text.innerText = 'Abierto Ahora';
+                text.classList.add('text-green-500');
+            } else {
+                dot.classList.add('bg-red-500');
+                text.innerText = 'Cerrado Ahora';
+                text.classList.add('text-red-500');
+            }
+            container.classList.remove('hidden');
+        }
+        // Ejecutar la verificación al cargar la página
+        checkOpenStatus();
     </script>
 </body>
 </html>
