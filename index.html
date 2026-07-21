@@ -81,21 +81,38 @@
                     <!-- Logo Principal referenciando el archivo solicitado -->
                     <img src="WESTER AUTO.png" alt="Wester Auto" class="h-12 object-contain">
                 </div>
+                
+                <!-- Links de Navegación (Escritorio) -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#servicios" class="text-gray-300 hover:text-brandRed transition font-medium">Servicios</a>
                     <a href="#asesoramiento" class="text-gray-300 hover:text-brandRed transition font-medium">Asesoramiento</a>
                     <a href="#diagnostico" class="text-gray-300 hover:text-brandRed transition font-medium">Turnos</a>
                 </div>
-                <div class="flex space-x-4 items-center">
-                    <!-- Indicador Horario Abierto/Cerrado -->
-                    <div id="status-indicator" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800 border border-gray-700">
+                
+                <div class="flex space-x-3 md:space-x-4 items-center">
+                    <!-- Indicador Horario Abierto/Cerrado (Oculto en mobile para ahorrar espacio) -->
+                    <div id="status-indicator" class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800 border border-gray-700">
                         <span id="status-dot" class="w-2.5 h-2.5 rounded-full animate-pulse"></span>
                         <span id="status-text" class="text-xs font-bold uppercase tracking-wider"></span>
                     </div>
                     
                     <a href="https://www.instagram.com/wester_auto2016/" target="_blank" class="text-gray-400 hover:text-brandRed text-xl transition"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/westerauto/?ref=NONE_xav_ig_profile_page_web#" target="_blank" class="text-gray-400 hover:text-brandRed text-xl transition"><i class="fab fa-facebook-f"></i></a>
+                    
+                    <!-- Botón Menú Hamburguesa (Mobile) -->
+                    <button id="menu-btn" class="md:hidden text-gray-300 text-2xl ml-2" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Menú Desplegable (Mobile) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-brandDark/95">
+            <div class="flex flex-col px-6 py-4 space-y-4">
+                <a href="#servicios" onclick="toggleMenu()" class="text-gray-300 hover:text-brandRed transition font-medium py-2">Servicios</a>
+                <a href="#asesoramiento" onclick="toggleMenu()" class="text-gray-300 hover:text-brandRed transition font-medium py-2">Asesoramiento</a>
+                <a href="#diagnostico" onclick="toggleMenu()" class="text-gray-300 hover:text-brandRed transition font-medium py-2">Turnos</a>
             </div>
         </div>
     </nav>
@@ -106,14 +123,14 @@
         <div class="hero-bg"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-brandDark via-brandDark/90 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal active">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 uppercase">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 uppercase">
                 Todo lo que <br><span class="text-brandRed">Tu Auto</span> Necesita
             </h1>
-            <p class="text-xl text-brandGray max-w-2xl mb-8 font-light">
+            <p class="text-lg sm:text-xl text-brandGray max-w-2xl mb-8 font-light">
                 Tu taller de confianza. Más de 20 años brindando servicio de calidad con los mejores equipos de tecnología y mecánica de precisión.
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="#diagnostico" class="bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full transition shadow-lg shadow-red-500/30">
+                <a href="#diagnostico" class="bg-brandRed hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full transition shadow-lg shadow-red-500/30 text-sm sm:text-base">
                     Solicitar Diagnóstico <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -366,12 +383,12 @@
                     <p class="text-brandGray mb-8">Completa los datos y te contactaremos de inmediato vía WhatsApp.</p>
                     
                     <!-- Tabs -->
-                    <div class="flex space-x-4 mb-6">
-                        <button onclick="switchTab('mecanica')" id="tab-mecanica" class="px-6 py-2 bg-brandRed text-white font-bold rounded-t-lg transition">Mecánica General</button>
-                        <button onclick="switchTab('cubiertas')" id="tab-cubiertas" class="px-6 py-2 bg-brandCard text-gray-400 font-bold rounded-t-lg hover:text-white transition">Cubiertas</button>
+                    <div class="flex space-x-2 sm:space-x-4 mb-6">
+                        <button onclick="switchTab('mecanica')" id="tab-mecanica" class="px-4 sm:px-6 py-2 bg-brandRed text-white font-bold rounded-t-lg transition text-sm sm:text-base">Mecánica General</button>
+                        <button onclick="switchTab('cubiertas')" id="tab-cubiertas" class="px-4 sm:px-6 py-2 bg-brandCard text-gray-400 font-bold rounded-t-lg hover:text-white transition text-sm sm:text-base">Cubiertas</button>
                     </div>
 
-                    <div class="bg-brandCard p-8 rounded-b-lg rounded-tr-lg border border-gray-800 shadow-2xl">
+                    <div class="bg-brandCard p-6 sm:p-8 rounded-b-lg rounded-tr-lg border border-gray-800 shadow-2xl">
                         
                         <!-- Formulario 1: Mecánica / Servicios Generales -->
                         <form id="formMecanica" onsubmit="enviarMecanica(event)" class="space-y-5 block">
@@ -511,7 +528,7 @@
                 <ul class="space-y-4">
                     <li class="flex items-center text-brandGray">
                         <i class="fab fa-whatsapp text-brandRed mr-3 text-xl"></i>
-                        <a href="https://api.whatsapp.com/send?phone=03541618210" target="_blank" class="hover:text-white transition">03541 61-8210</a>
+                        <a href="https://api.whatsapp.com/send?phone=54903541618210" target="_blank" class="hover:text-white transition">03541 61-8210</a>
                     </li>
                     <li class="flex items-start text-brandGray">
                         <i class="fas fa-map-marker-alt text-brandRed mr-3 text-xl mt-1"></i>
@@ -546,7 +563,7 @@
     <div class="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
         <!-- Botón Reseñas -->
         <a href="https://maps.app.goo.gl/v4xgh3rJ1VtnujLe9" target="_blank" class="bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white px-4 py-2 rounded-full shadow-lg text-sm font-medium flex items-center gap-2 transition hover:-translate-y-1">
-            <i class="fas fa-star text-yellow-400"></i> Déjanos tu reseña
+            <i class="fas fa-star text-yellow-400"></i> <span class="hidden sm:inline">Déjanos tu reseña</span>
         </a>
         <!-- Botón Maps -->
         <a href="https://maps.app.goo.gl/v4xgh3rJ1VtnujLe9" target="_blank" class="bg-brandRed hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-lg shadow-red-500/30 transition hover:-translate-y-1 self-start">
@@ -602,7 +619,7 @@
             const vehiculo = document.getElementById('m_vehiculo').value;
             const servicio = document.getElementById('m_servicio').value;
             const descripcion = document.getElementById('m_descripcion').value;
-            const telefono = "03541618210";
+            const telefono = "54903541618210";
             
             let mensaje = `*🔧 NUEVA CONSULTA DE SERVICIO* %0A%0A`;
             mensaje += `👤 *Nombre:* ${nombre} %0A`;
@@ -622,7 +639,7 @@
             const nombre = document.getElementById('c_nombre').value;
             const vehiculo = document.getElementById('c_vehiculo').value;
             const medida = document.getElementById('c_medida').value;
-            const telefono = "03541618210";
+            const telefono = "54903541618210";
             
             let mensaje = `*🛞 NUEVA CONSULTA DE CUBIERTAS* %0A%0A`;
             mensaje += `👤 *Nombre:* ${nombre} %0A`;
@@ -674,6 +691,21 @@
         }
         // Ejecutar la verificación al cargar la página
         checkOpenStatus();
+
+        // 6. Lógica Menú Responsive (Mobile)
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#menu-btn i');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
     </script>
 </body>
 </html>
