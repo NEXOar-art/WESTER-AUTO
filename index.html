@@ -47,6 +47,20 @@
         ::-webkit-scrollbar-track { background: #0f0f0f; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #e63946; }
+
+        /* Movimiento Imagen Principal (Efecto Ken Burns) */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            animation: kenburns 20s ease-in-out infinite alternate;
+        }
+        @keyframes kenburns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.15) translate(-2%, -2%); }
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -73,7 +87,9 @@
     </nav>
 
     <!-- A. Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center">
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Fondo con animación -->
+        <div class="hero-bg"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-brandDark via-brandDark/90 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal active">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 uppercase">
@@ -107,6 +123,166 @@
                 <i class="fas fa-handshake text-4xl text-brandRed mb-4"></i>
                 <h3 class="text-xl font-bold mb-2">Transparencia Total</h3>
                 <p class="text-brandGray text-sm">Informes detallados y asesoramiento honesto en cada reparación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUESTROS SERVICIOS (Nueva Sección) -->
+    <section id="servicios" class="py-20 bg-brandDark border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 uppercase">Nuestros <span class="text-brandRed">Servicios</span></h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                
+                <!-- Servicio 1: Lubricentro -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://z-cdn-media.chatglm.cn/files/7c8443f7-7123-4adc-8b4a-0c2853df226d.png?auth_key=1884663545-3f133bb06d6f4773bdbc7588cdffd251-0-1496b95aabbbaab1f37a678dd0a7d71e" alt="Lubricentro" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-oil-can text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Lubricentro</h3>
+                        <p class="text-brandGray text-sm mt-2">Cambio de aceite y filtros con productos de primera calidad para tu motor.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 2: Freno -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1632238347635-3c5b16c07032?q=80&w=600&auto=format&fit=crop" alt="Frenos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-compact-disc text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Freno</h3>
+                        <p class="text-brandGray text-sm mt-2">Revisión y cambio de pastillas, zapatas, discos y líquido de frenos.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 3: Suspension -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?q=80&w=600&auto=format&fit=crop" alt="Suspensión" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-car-burst text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Suspensión</h3>
+                        <p class="text-brandGray text-sm mt-2">Diagnóstico y reparación de amortiguadores, espirales y rótulas.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 4: Motor Embrague -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1599256871679-5d06e5f9d6f4?q=80&w=600&auto=format&fit=crop" alt="Motor y Embrague" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-cogs text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Motor / Embrague</h3>
+                        <p class="text-brandGray text-sm mt-2">Reparaciones integrales de motor y sistemas de embrague.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 5: Distribución -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=600&auto=format&fit=crop" alt="Distribución" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-sync-alt text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Distribución</h3>
+                        <p class="text-brandGray text-sm mt-2">Cambio de correas, tensores y kit de distribución completo.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 6: Alineado -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://z-cdn-media.chatglm.cn/files/3bacdf3e-6d12-4917-b1db-f01d2fcabed2.png?auth_key=1884663545-0f401eac7f354c52884a6b92cc4ece3e-0-f322fa308a2ee0ea88da4ab9c0c86bb7" alt="Alineado" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-arrows-left-right text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Alineado</h3>
+                        <p class="text-brandGray text-sm mt-2">Alineación de precisión 3D para un desgaste uniforme y seguro.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 7: Balanceo -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=600&auto=format&fit=crop" alt="Balanceo" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-balance-scale text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Balanceo</h3>
+                        <p class="text-brandGray text-sm mt-2">Equilibrado de ruedas para eliminar vibraciones al rodar.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 8: Rotación -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://z-cdn-media.chatglm.cn/files/0d284877-f73d-4d52-b00c-d126a4f2716d.png?auth_key=1884663545-8422d5f9a75f4fb09f0da5d08b83f4f4-0-58977e8d08792752fd8cb46fc4bb93e9" alt="Rotación" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-sync text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Rotación</h3>
+                        <p class="text-brandGray text-sm mt-2">Intercambio de neumáticos para prolongar su vida útil.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 9: Tren Delantero -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://z-cdn-media.chatglm.cn/files/aadfb5aa-bc10-454e-ab8c-f215ceee4108.png?auth_key=1884663545-2e28c15ff3ca49dfaa5464638163a92b-0-73656f6768187a26984c1ae3cd1c8d40" alt="Tren Delantero" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-car-side text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Tren Delantero</h3>
+                        <p class="text-brandGray text-sm mt-2">Reparación de extremos, rótulas y bujes para dirección estable.</p>
+                    </div>
+                </div>
+
+                <!-- Servicio 10: Mecánica en General -->
+                <div class="group relative overflow-hidden rounded-2xl border border-gray-800 bg-brandCard card-hover transition duration-300 reveal">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?q=80&w=600&auto=format&fit=crop" alt="Mecánica en General" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brandCard via-brandCard/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative">
+                        <div class="absolute -top-8 right-6 bg-brandRed w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fas fa-tools text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold uppercase group-hover:text-brandRed transition">Mecánica en General</h3>
+                        <p class="text-brandGray text-sm mt-2">Soluciones integrales para cualquier necesidad de tu vehículo.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
